@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify NERD Compliance Clearance</title>
+    <meta name="description" content="Verify your NERD Compliance Clearance Certificate">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="page-container verify-page">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="assets/nerd_logo.png" alt="NERD Logo" class="logo">
+                    <div class="logo-text">
+                        <h1>N.E.R.D</h1>
+                        <p>Nigeria Education Repository and Databank</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Loading State -->
+        <div class="verify-loading" id="loadingState">
+            <div class="loading-spinner"></div>
+            <p>Verifying certificate...</p>
+        </div>
+
+        <!-- Error State -->
+        <div class="verify-error" id="errorState" style="display: none;">
+            <div class="error-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="15" y1="9" x2="9" y2="15" />
+                    <line x1="9" y1="9" x2="15" y2="15" />
+                </svg>
+            </div>
+            <h2>Certificate Not Found</h2>
+            <p>The certificate with the provided NDN could not be verified. Please check the NDN and try again.</p>
+            <a href="index.html" class="btn-primary">Generate New Certificate</a>
+        </div>
+
+        <!-- Success State - Certificate Display -->
+        <div class="verify-success" id="successState" style="display: none;">
+            <!-- Verified Badge -->
+            <div class="verified-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                </svg>
+                <span>Verified Certificate</span>
+            </div>
+
+            <!-- Certificate Container -->
+            <div class="certificate-wrapper">
+                <div class="certificate" id="certificate">
+                    <!-- Certificate Header -->
+                    <div class="certificate-header">
+                        <h1 class="certificate-title">NERD Compliance Clearance</h1>
+                        <div class="ndn-badge" id="ndnBadge">NDN: <span id="ndnNumber">-</span></div>
+                    </div>
+
+                    <!-- Certificate Body -->
+                    <div class="certificate-body">
+                        <!-- Main Info Grid -->
+                        <div class="info-grid">
+                            <div class="info-row">
+                                <span class="info-label">Title:</span>
+                                <span class="info-value" id="certTitle">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Student name:</span>
+                                <span class="info-value" id="certStudentName">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Institution:</span>
+                                <span class="info-value" id="certInstitution">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Faculty:</span>
+                                <span class="info-value" id="certFaculty">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Department:</span>
+                                <span class="info-value" id="certDepartment">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Submission Type:</span>
+                                <span class="info-value" id="certSubmissionType">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">Date of Submission:</span>
+                                <span class="info-value" id="certSubmissionDate">-</span>
+                            </div>
+                        </div>
+
+                        <!-- Compliance Section -->
+                        <div class="compliance-section">
+                            <h3 class="section-title">Compliance</h3>
+                            <p>NCVS Compliance: <span id="certNcvsCompliance">-</span></p>
+                            <p>Academic report submission: <span id="certAcademicReport">-</span></p>
+                        </div>
+
+                        <!-- Contribution Section -->
+                        <div class="contribution-section">
+                            <h3 class="section-title">Contribution</h3>
+                            <p>Amount contributed to support platform: <span id="certContribution">-</span></p>
+                        </div>
+
+                        <!-- Issued By Section -->
+                        <div class="issued-section">
+                            <h3 class="section-title">Issued by</h3>
+                            <div class="issued-content">
+                                <div class="issued-info">
+                                    <img src="assets/nerd_logo.png" alt="NERD Logo" class="issued-logo">
+                                    <div class="issued-details">
+                                        <p><strong>The Nigeria Education Repository and Databank (N.E.R.D)</strong></p>
+                                        <p>Under the National Policy for NERD.</p>
+                                        <p>Email: support@ned.gov.ng | Phone: +234 806 004 4989</p>
+                                        <p>Website: www.ned.gov.ng</p>
+                                    </div>
+                                </div>
+                                <div class="qr-section">
+                                    <div id="qrcode"></div>
+                                    <p class="verify-text">Verify NDN: <span id="verifyUrl">-</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="verify-actions">
+                <a href="index.html" class="btn-secondary">Generate New Certificate</a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 Nigeria Education Repository and Databank (N.E.R.D). All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/verify.js"></script>
+</body>
+
+</html>

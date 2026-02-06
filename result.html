@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NERD Compliance Clearance - Certificate</title>
+    <meta name="description" content="Your NERD Compliance Clearance Certificate">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css?v=5">
+</head>
+
+<body>
+    <div class="page-container result-page">
+        <!-- Actions Bar (not printed) -->
+        <div class="actions-bar no-print">
+            <button class="btn-secondary" onclick="window.location.href='index.html'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 5v14M5 12l7-7 7 7" />
+                </svg>
+                Generate New
+            </button>
+            <button class="btn-primary" id="savePdfBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Save as PDF
+            </button>
+        </div>
+
+        <!-- Certificate Container -->
+        <div class="certificate-wrapper">
+            <div class="certificate" id="certificate">
+                <!-- Certificate Header -->
+                <div class="certificate-header">
+                    <h1 class="certificate-title">NERD Compliance Clearance</h1>
+                    <div class="ndn-badge">NDN: <span id="ndnNumber">-</span></div>
+                </div>
+
+                <!-- Certificate Body -->
+                <div class="certificate-body">
+                    <!-- Main Info Grid -->
+                    <div class="info-grid">
+                        <div class="info-row">
+                            <span class="info-label">Title:</span>
+                            <span class="info-value" id="certTitle">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Student name:</span>
+                            <span class="info-value" id="certStudentName">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Institution:</span>
+                            <span class="info-value" id="certInstitution">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Faculty:</span>
+                            <span class="info-value" id="certFaculty">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Department:</span>
+                            <span class="info-value" id="certDepartment">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Submission Type:</span>
+                            <span class="info-value" id="certSubmissionType">-</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Date of Submission:</span>
+                            <span class="info-value" id="certSubmissionDate">-</span>
+                        </div>
+                    </div>
+
+                    <!-- Compliance Section -->
+                    <div class="compliance-section">
+                        <h3 class="section-title">Compliance</h3>
+                        <p>NCVS Compliance: <span id="certNcvsCompliance">-</span></p>
+                        <p>Academic report submission: <span id="certAcademicReport">-</span></p>
+                    </div>
+
+                    <!-- Contribution Section -->
+                    <div class="contribution-section">
+                        <h3 class="section-title">Contribution</h3>
+                        <p>Amount contributed to support platform: <span id="certContribution">-</span></p>
+                    </div>
+
+                    <!-- Issued By Section -->
+                    <div class="issued-section">
+                        <h3 class="section-title">Issued by</h3>
+                        <div class="issued-content">
+                            <div class="issued-info">
+                                <img src="assets/nerd_logo.png" alt="NERD Logo" class="issued-logo">
+                                <div class="issued-details">
+                                    <p>The Nigeria Education Repository and Databank (N.E.R.D)</p>
+                                    <p>Under the National Policy for NERD.</p>
+                                    <p>Email: support@ned.gov.ng | Phone: +234 806 004 4989</p>
+                                    <p>Website: www.ned.gov.ng</p>
+                                </div>
+                            </div>
+                            <div class="qr-section">
+                                <div id="qrcode"></div>
+                                <p class="verify-text">Verify NDN: <span id="verifyUrl">-</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="js/result.js?v=7"></script>
+</body>
+
+</html>

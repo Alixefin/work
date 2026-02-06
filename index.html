@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NERD Compliance Clearance - Generate Certificate</title>
+    <meta name="description"
+        content="Nigeria Education Repository and Databank - Generate your compliance clearance certificate">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css?v=5">
+</head>
+
+<body>
+    <div class="page-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="assets/nerd_logo.png" alt="NERD Logo" class="logo">
+                    <div class="logo-text">
+                        <h1>N.E.R.D</h1>
+                        <p>Nigeria Education Repository and Databank</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Generate Compliance Clearance</h2>
+                    <p>Fill in the details below to generate your NERD Compliance Clearance certificate</p>
+                </div>
+
+                <form id="clearanceForm" class="clearance-form">
+                    <!-- Project/Thesis Title -->
+                    <div class="form-group">
+                        <label for="title">Title <span class="required">*</span></label>
+                        <textarea id="title" name="title" rows="2" placeholder="Enter your project/thesis title"
+                            required></textarea>
+                    </div>
+
+                    <!-- Student Name -->
+                    <div class="form-group">
+                        <label for="studentName">Student Name <span class="required">*</span></label>
+                        <input type="text" id="studentName" name="studentName" placeholder="Enter full name" required>
+                    </div>
+
+                    <!-- Institution -->
+                    <div class="form-group">
+                        <label for="institution">Institution <span class="required">*</span></label>
+                        <input type="text" id="institution" name="institution" list="institutions"
+                            placeholder="Enter institution name" required>
+                        <datalist id="institutions">
+                            <option value="Federal University, Lokoja, Kogi State">
+                            <option value="University of Lagos">
+                            <option value="University of Ibadan">
+                            <option value="Ahmadu Bello University">
+                            <option value="University of Nigeria, Nsukka">
+                            <option value="Obafemi Awolowo University">
+                            <option value="University of Benin">
+                            <option value="University of Ilorin">
+                            <option value="Federal University of Technology, Akure">
+                            <option value="Covenant University">
+                        </datalist>
+                    </div>
+
+                    <!-- Two Column Row -->
+                    <div class="form-row">
+                        <!-- Faculty -->
+                        <div class="form-group">
+                            <label for="faculty">Faculty <span class="required">*</span></label>
+                            <input type="text" id="faculty" name="faculty" placeholder="e.g., Social Sciences" required>
+                        </div>
+
+                        <!-- Department -->
+                        <div class="form-group">
+                            <label for="department">Department <span class="required">*</span></label>
+                            <input type="text" id="department" name="department" placeholder="e.g., Economics" required>
+                        </div>
+                    </div>
+
+                    <!-- Submission Type -->
+                    <div class="form-group">
+                        <label for="submissionType">Submission Type <span class="required">*</span></label>
+                        <select id="submissionType" name="submissionType" required>
+                            <option value="">Select submission type</option>
+                            <option value="Project">Project</option>
+                            <option value="Thesis">Thesis</option>
+                            <option value="Dissertation">Dissertation</option>
+                            <option value="Research Paper">Research Paper</option>
+                            <option value="Journal Article">Journal Article</option>
+                        </select>
+                    </div>
+
+                    <!-- Compliance Section -->
+                    <div class="form-section">
+                        <h3>Compliance Information</h3>
+
+                        <div class="form-row">
+                            <!-- NCVS Compliance -->
+                            <div class="form-group">
+                                <label for="ncvsCompliance">NCVS Compliance</label>
+                                <select id="ncvsCompliance" name="ncvsCompliance">
+                                    <option value="Not enforced">Not enforced</option>
+                                    <option value="Enforced">Enforced</option>
+                                </select>
+                            </div>
+
+                            <!-- Academic Report -->
+                            <div class="form-group">
+                                <label for="academicReport">Academic Report Submission</label>
+                                <select id="academicReport" name="academicReport">
+                                    <option value="Complied">Complied</option>
+                                    <option value="Not Complied">Not Complied</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contribution -->
+                    <div class="form-group">
+                        <label for="contribution">Contribution Amount</label>
+                        <input type="text" id="contribution" name="contribution" placeholder="e.g., N/A (via Partner)"
+                            value="N/A (via Partner)">
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary" id="generateBtn">
+                            <span class="btn-text">Generate Clearance Certificate</span>
+                            <span class="btn-loading" style="display: none;">
+                                <span class="spinner"></span>
+                                Generating...
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 Nigeria Education Repository and Databank (N.E.R.D). All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/app.js?v=3"></script>
+</body>
+
+</html>
