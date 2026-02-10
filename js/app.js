@@ -123,12 +123,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * Generate unique NERD Document Number
-     * @returns {string} NDN in format: NDN-PRJ-XXXXXXXXXX
+     * @returns {string} NDN in format: PRJ-XXXXXXXXXXXXXXXXXX (last 3 digits random)
      */
     function generateNDN() {
-        const timestamp = Date.now();
-        const random = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
-        return `NDN-PRJ-${timestamp}${random}`;
+        const timestamp = Date.now().toString(); // 13 digits
+        const mid = Math.floor(Math.random() * 100).toString().padStart(2, '0');
+        const unique = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+        return `PRJ-${timestamp}${mid}${unique}`;
     }
 
     /**

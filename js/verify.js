@@ -50,16 +50,44 @@ async function verifyCertificate() {
         errorState.style.display = 'none';
         successState.style.display = 'block';
 
-        // Populate certificate
-        populateCertificate(data);
-
-        // Generate QR code
-        generateQRCode(data.ndn);
+        // If we have a stored certificate image, display it directly
+        if (data.certificate_image) {
+            showStoredCertificateImage(data.certificate_image);
+        } else {
+            // Fall back to populating certificate from data fields
+            populateCertificate(data);
+            generateQRCode(data.ndn);
+        }
     }
 }
 
 /**
- * Populate certificate with submission data
+ * Display the stored certificate image from the database
+ * @param {string} imageDataUrl - Base64 image data URL
+ */
+function showStoredCertificateImage(imageDataUrl) {
+    const certificate = document.getElementById('certificate');
+
+    // Replace all certificate content with the stored image
+    certificate.innerHTML = '';
+    certificate.style.padding = '0';
+    certificate.style.border = 'none';
+    certificate.style.borderTop = 'none';
+
+    const img = document.createElement('img');
+    img.src = imageDataUrl;
+    img.alt = 'NERD Compliance Clearance Certificate';
+    img.style.width = '100%';
+    img.style.maxWidth = '800px';
+    img.style.display = 'block';
+    img.style.borderRadius = '4px';
+    img.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+
+    certificate.appendChild(img);
+}
+
+/**
+ * Populate certificate with submission data (fallback)
  * @param {Object} data - Submission data
  */
 function populateCertificate(data) {
@@ -92,7 +120,7 @@ function populateCertificate(data) {
 }
 
 /**
- * Generate QR code for verification
+ * Generate QR code for verification (fallback)
  * @param {string} ndn - NERD Document Number
  */
 function generateQRCode(ndn) {

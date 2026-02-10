@@ -36,6 +36,11 @@ function loadCertificateData() {
 
     // Generate QR code and save to storage
     generateQRCode(submission.ndn);
+
+    // After QR code is fully rendered, capture certificate as image and save to DB
+    setTimeout(() => {
+        saveCertificateImage(submission.ndn);
+    }, 800);
 }
 
 /**
@@ -43,9 +48,8 @@ function loadCertificateData() {
  * @param {Object} data - Submission data
  */
 function populateCertificate(data) {
-    // NDN - Format as "PRJ-XXXXXXXXX" (remove "NDN-" prefix from value)
-    const ndnDisplay = data.ndn.replace('NDN-', '');
-    document.getElementById('ndnNumber').textContent = ndnDisplay;
+    // NDN - Display as-is (format: PRJ-XXXXXXXXXXXXXXXXXX)
+    document.getElementById('ndnNumber').textContent = data.ndn;
 
     // Main info
     document.getElementById('certTitle').textContent = data.title;
@@ -220,4 +224,35 @@ async function generatePDF() {
 
     // Generate PDF
     await html2pdf().set(options).from(certificate).save();
+}
+
+/**
+ * Capture the rendered certificate as an image and save to database
+ * @param {string} ndn - NERD Document Number
+ */
+async function saveCertificateImage(ndn) {
+    try {
+        const certificate = document.getElementById('certificate');
+
+        // Use html2canvas (bundled with html2pdf) to capture the certificate
+        const canvas = await html2canvas(certificate, {
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            logging: false,
+            backgroundColor: '#ffffff'
+        });
+
+        // Convert to JPEG base64 (smaller than PNG)
+        const imageDataUrl = canvas.toDataURL('image/jpeg', 0.85);
+
+        // Save to database
+        await updateSubmissionCertificate(ndn, imageDataUrl);
+        console.log('Certificate image captured and saved to database');
+
+    } catch (err) {
+        console.error('Failed to save certificate image to database:', err);
+        // Don't alert the user - this is a background operation
+        // The certificate is still visible on the page
+    }
 }

@@ -76,7 +76,31 @@ async function ndnExists(ndn) {
     return count > 0;
 }
 
+/**
+ * Update a submission with the certificate image
+ * @param {string} ndn - NERD Document Number
+ * @param {string} certificateImage - Base64 image data URL
+ * @returns {Promise<Object>} - Updated record or error
+ */
+async function updateSubmissionCertificate(ndn, certificateImage) {
+    const { data, error } = await supabase
+        .from('submissions')
+        .update({ certificate_image: certificateImage })
+        .eq('ndn', ndn)
+        .select()
+        .single();
+
+    if (error) {
+        console.error('Error updating certificate image:', error);
+        throw error;
+    }
+
+    console.log('Certificate image saved to database for NDN:', ndn);
+    return data;
+}
+
 // Expose functions globally
 window.insertSubmission = insertSubmission;
 window.getSubmissionByNDN = getSubmissionByNDN;
 window.ndnExists = ndnExists;
+window.updateSubmissionCertificate = updateSubmissionCertificate;
