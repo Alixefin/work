@@ -8,6 +8,12 @@ const BASE_URL = window.location.origin + window.location.pathname.replace('resu
 document.addEventListener('DOMContentLoaded', () => {
     loadCertificateData();
     setupPdfExport();
+
+    // Show "Generate New" button only for admins
+    const generateNewBtn = document.getElementById('generateNewBtn');
+    if (generateNewBtn && typeof isAdminAuthenticated === 'function' && isAdminAuthenticated()) {
+        generateNewBtn.style.display = 'inline-flex';
+    }
 });
 
 /**

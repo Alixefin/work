@@ -9,14 +9,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=5">
+    <link rel="stylesheet" href="css/styles.css?v=6">
 </head>
 
 <body>
     <div class="page-container result-page">
         <!-- Actions Bar (not printed) -->
         <div class="actions-bar no-print">
-            <button class="btn-secondary" onclick="window.location.href='index.html'">
+            <button class="btn-secondary" id="generateNewBtn" onclick="window.location.href='index.html'"
+                style="display: none;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 5v14M5 12l7-7 7 7" />
@@ -118,7 +119,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="js/result.js?v=7"></script>
+    <script src="js/admin.js?v=1"></script>
+    <script src="js/result.js?v=8"></script>
 </body>
 
 </html>

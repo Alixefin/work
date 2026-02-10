@@ -600,6 +600,126 @@ body {
 }
 
 /* ========================================
+   ADMIN OVERLAY
+   ======================================== */
+.admin-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.admin-modal {
+    background: var(--bg-white);
+    border-radius: 16px;
+    padding: 3rem 2.5rem;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.admin-modal-icon {
+    color: var(--primary-green);
+    margin-bottom: 1.5rem;
+}
+
+.admin-modal h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.admin-modal>p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.admin-input-group {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.admin-input-group input {
+    flex: 1;
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    font-family: inherit;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    background: var(--bg-white);
+}
+
+.admin-input-group input:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(0, 104, 55, 0.1);
+}
+
+.admin-input-group .btn-primary {
+    width: auto;
+    padding: 0.875rem 1.5rem;
+    white-space: nowrap;
+}
+
+.admin-error {
+    color: #dc2626;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.shake {
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-5px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(5px);
+    }
+}
+
+/* ========================================
    RESPONSIVE
    ======================================== */
 @media (max-width: 768px) {
